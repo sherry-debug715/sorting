@@ -20,25 +20,45 @@ function selectionSort(arr) {
 // arr = [2,4,6,8,1,3,5,7,9];
 // console.log(selectionSort(arr))
 
+// function selectionSortInPlace(arr) {
+//     let pointer = 0;
+//     while(pointer < arr.length) {
+//         let minVal = arr[pointer];
+//         let minIndex = pointer;
+//         for(let i = pointer + 1; i < arr.length; i ++) {
+//             if(arr[i] < minVal) {
+//                 minVal = arr[i];
+//                 minIndex = i
+//             }
+//         }
+//         [arr[pointer], arr[minIndex]] = [arr[minIndex], arr[pointer]];
+
+//         pointer += 1
+//     }
+//     return arr;
+// }
+
+
 function selectionSortInPlace(arr) {
-    let pointer = 0;
+    let pointer = 0
     while(pointer < arr.length) {
-        let minVal = arr[pointer];
+        console.log(arr.join(','))
         let minIndex = pointer;
-        for(let i = pointer + 1; i < arr.length; i ++) {
-            if(arr[i] < minVal) {
-                minVal = arr[i];
+        for (let i = pointer + 1; i < arr.length; i++) {
+            if (arr[i] < arr[minIndex]) {
                 minIndex = i
             }
         }
-        [arr[pointer], arr[minIndex]] = [arr[minIndex], arr[pointer]];
-
-        pointer += 1
+        swap(pointer, minIndex, arr);
+        pointer += 1;
     }
-    return arr;
+    return arr
 }
 
-// arr = [2,4,6,8,1,3,5,7,9];
+function swap(index1, index2, arr) {
+    return [arr[index1], arr[index2]] = [arr[index2], arr[index1]]
+}
+arr = [2,4,6,8,1,3,5,7,9];
 
-// console.log(selectionSortInPlace(arr))
+console.log(selectionSortInPlace(arr))
 module.exports = [selectionSort, selectionSortInPlace];
